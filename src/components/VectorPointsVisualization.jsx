@@ -187,7 +187,7 @@ const VectorPointsVisualization = () => {
             <input
               type="range"
               min="0"
-              max="10" // Max n set to 10
+              max="12" // Max n set to 10
               value={n}
               onChange={(e) => setN(parseInt(e.target.value))}
               className="w-full"
