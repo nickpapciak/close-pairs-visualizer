@@ -10,8 +10,7 @@ const VectorPointsVisualization = () => {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
 
-  // some random unit vectors
-  // I asked deepseek to generate
+  // Some random unit vectors
   const maxVectors = useMemo(() => {
     return [
       { x: 0.7071067811865476, y: -0.7071067811865475 },
@@ -98,7 +97,9 @@ const VectorPointsVisualization = () => {
 
   // Hardcoded close pairs count
   const closePairsCount = useMemo(() => {
-    const counts = [0, 1, 4, 12, 32, 80, 192, 448, 1024, 2304, 5120];
+    const counts = [
+      0, 1, 4, 12, 32, 80, 192, 448, 1024, 2304, 5120, 11264, 24576, 53248,
+    ];
     return counts[n] || 0;
   }, [n]);
 
@@ -168,7 +169,7 @@ const VectorPointsVisualization = () => {
       <div className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">
-            Close Point Algoritm Visualizer
+            Close Point Algorithm Visualizer
           </h1>
           <p className="text-gray-600 mb-4">
             Generates <InlineMath math={`\\Omega(n\\log(n))`} /> close points.
@@ -215,6 +216,22 @@ const VectorPointsVisualization = () => {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
           >
+            <defs>
+              {/* Larger and more visible arrowhead */}
+              <marker
+                id="arrowhead"
+                markerWidth="8" // Increased size
+                markerHeight="8" // Increased size
+                refX="9" // Adjusted refX for better positioning
+                refY="3" // Adjusted refY for better positioning
+                orient="auto"
+                markerUnits="strokeWidth"
+              >
+                <path d="M0,0 L0,6 L9,3 Z" fill="#555" fillOpacity="0.2" />{" "}
+                {/* Larger triangle */}
+              </marker>
+            </defs>
+
             <g transform={`translate(${pan.x}, ${pan.y})`}>
               {/* Grid lines */}
               {Array.from(
@@ -272,8 +289,9 @@ const VectorPointsVisualization = () => {
                   x2={centerX + p2.x * scale}
                   y2={centerY - p2.y * scale}
                   stroke="#666" // Grey color
-                  strokeWidth={0.2} // Fixed thin lines
-                  strokeOpacity={0.8} // Higher opacity for last batch
+                  strokeWidth={1} // Increased stroke width for better visibility
+                  strokeOpacity={0.1} // Higher opacity for last batch
+                  markerEnd="url(#arrowhead)" // Add arrowhead
                 />
               ))}
 
