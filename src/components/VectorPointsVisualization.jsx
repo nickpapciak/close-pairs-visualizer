@@ -180,9 +180,7 @@ const VectorPointsVisualization = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
           <div className="col-span-3">
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              <InlineMath
-                math={`k = ${n} \\   (n = ${Math.pow(2, n)} \\text{ points})`}
-              />
+              <InlineMath math={`n = ${Math.pow(2, n)} \\text{ points}`} />
             </label>
             <input
               type="range"
