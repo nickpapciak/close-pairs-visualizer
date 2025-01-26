@@ -181,7 +181,7 @@ const VectorPointsVisualization = () => {
           <div className="col-span-3">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               <InlineMath
-                math={`n = ${n} \\ (${Math.pow(2, n)} \\text{ points})`}
+                math={`k = ${n} \\ n = (${Math.pow(2, n)} \\text{ points})`}
               />
             </label>
             <input
